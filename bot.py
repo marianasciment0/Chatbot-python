@@ -1,8 +1,16 @@
-import nltk
 import random
 import re
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from respostaspadrao import get_respostasPadrao
 from questoes import questoes
+
+def preprocessamento(texto):
+    tokens = word_tokenize(texto.lower())
+    stopwords_pt = set(stopwords.words('portuguese'))
+    tokens = [token for token in tokens if token not in stopwords_pt]
+    return tokens
 
 def chatbot():
     print("Olá! Sou o AdaBot. Para que eu possa te ajudar, a qualquer momento, você pode digitar e enviar o número da questão relacionada a sua dúvida, tá bem?")
@@ -27,8 +35,8 @@ def chatbot():
                 
                 if opcao_selecionada in questoes[entrada]["opcoes"]:
                     print(questoes[entrada]["opcoes"][opcao_selecionada])
-                    outraDuvida = input("Você tem outra dúvida? (sim/não) ").lower()
-                    if any(re.match(pattern, outraDuvida) for pattern in afirmacao):
+                    outra_duvida = input("Você tem outra dúvida? (sim/não) ").lower()
+                    if any(re.match(pattern, outra_duvida) for pattern in afirmacao):
                         continue
                     else:
                         print("Você pode digitar e enviar o número da questão relacionada a sua dúvida, tá bem?")

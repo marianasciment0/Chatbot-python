@@ -22,6 +22,8 @@ Baixe os recursos adicionais
   #O comando deve ser executado em um ambiente Python
   import nltk
   nltk.download()
+  nltk.download('punkt')
+  nltk.download('stopwords')
 ```
 ## 🖥️ Tecnologias Utilizadas 
 ![PYTHON](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=yellow)
