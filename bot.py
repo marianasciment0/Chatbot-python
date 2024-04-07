@@ -1,5 +1,4 @@
-# bot.py
-
+import nltk
 import random
 import re
 from respostaspadrao import get_respostasPadrao
@@ -28,9 +27,8 @@ def chatbot():
                 
                 if opcao_selecionada in questoes[entrada]["opcoes"]:
                     print(questoes[entrada]["opcoes"][opcao_selecionada])
-                    # Pergunta se tem outra dúvida
-                    outra_duvida = input("Você tem outra dúvida? (sim/não) ").lower()
-                    if any(re.match(pattern, outra_duvida) for pattern in afirmacao):
+                    outraDuvida = input("Você tem outra dúvida? (sim/não) ").lower()
+                    if any(re.match(pattern, outraDuvida) for pattern in afirmacao):
                         continue
                     else:
                         print("Você pode digitar e enviar o número da questão relacionada a sua dúvida, tá bem?")
